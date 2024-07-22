@@ -1,9 +1,9 @@
+import 'package:example_radio/screens/home_screen.dart';
+import 'package:example_radio/screens/radio_screen1.dart';
+import 'package:example_radio/screens/radio_screen2.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'radio_provider.dart';
-import 'home_screen.dart';
-import 'radio_screen1.dart';
-import 'radio_screen2.dart';
 
 void main() {
   runApp(MyApp());

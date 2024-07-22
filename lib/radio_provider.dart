@@ -8,6 +8,7 @@ class RadioProvider extends ChangeNotifier {
 
   String get currentUrl => _currentUrl;
   bool get isPlaying => _isPlaying;
+  AudioPlayer get audioPlayer => _audioPlayer;
 
   Future<void> playRadio(String url) async {
     if (_currentUrl != url) {
