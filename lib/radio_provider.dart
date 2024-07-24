@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RadioProvider extends ChangeNotifier {
   final AudioPlayer _audioPlayer = AudioPlayer();
@@ -8,14 +9,28 @@ class RadioProvider extends ChangeNotifier {
   bool _isPlaying = false;
   int _currentRadioIndex = 0;
 
-  final List<String> _radioUrls = [
-    'https://limitsiz.kesintisizyayin.com/8002/stream1', // Radyo 1 URL
-    'https://limitsiz.kesintisizyayin.com/8002/stream2', // Radyo 2 URL
-  ];
+  List<String> _radioUrls = []; // Firestore'dan çekilecek
 
   String get currentUrl => _currentUrl;
   bool get isPlaying => _isPlaying;
   AudioPlayer get audioPlayer => _audioPlayer;
+  List<String> get radioUrls => _radioUrls; // Radio URLs getter
+
+  RadioProvider() {
+    _fetchRadioUrls(); // Başlangıçta URL'leri çek
+  }
+
+  Future<void> _fetchRadioUrls() async {
+    try {
+      final querySnapshot = await FirebaseFirestore.instance.collection('radios').get();
+      _radioUrls = querySnapshot.docs.map((doc) => doc['url'] as String).toList();
+      if (_radioUrls.isNotEmpty) {
+        await playRadio(_radioUrls[0]);
+      }
+    } catch (e) {
+      print("Error fetching radio URLs: $e");
+    }
+  }
 
   Future<void> playRadio(String url) async {
     if (_currentUrl != url) {

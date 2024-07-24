@@ -7,6 +7,17 @@ class RadioScreen1 extends StatelessWidget {
   Widget build(BuildContext context) {
     final radioProvider = Provider.of<RadioProvider>(context);
 
+    if (radioProvider.radioUrls.isEmpty) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text('Radio 1'),
+        ),
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Radio 1'),
@@ -33,7 +44,7 @@ class RadioScreen1 extends StatelessWidget {
                   iconSize: 64,
                   icon: Icon(Icons.play_arrow),
                   onPressed: () {
-                    radioProvider.playRadio('https://limitsiz.kesintisizyayin.com/8002/stream1');
+                    radioProvider.playRadio(radioProvider.radioUrls[0]);
                   },
                 ),
                 IconButton(

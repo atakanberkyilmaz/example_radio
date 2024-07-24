@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "408577952902",
+    "project_id": "exampleradioson",
+    "storage_bucket": "exampleradioson.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408577952902:android:31c9995b85a3b7b6185507",
+        "android_client_info": {
+          "package_name": "com.example.example_radio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDd_M2MDgYdmc0sLiHqamBGxMGNsvPTJvs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
