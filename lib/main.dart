@@ -5,9 +5,11 @@ import 'package:provider/provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'radio_provider.dart';
+import 'news_provider.dart';
 import 'screens/home_screen.dart';
 import 'screens/radio_screen1.dart';
 import 'screens/radio_screen2.dart';
+import 'screens/news_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,7 +41,7 @@ void main() async {
     );
   }
 
-  NotificationService.initialize(); //
+  NotificationService.initialize();
 
   runApp(MyApp());
 }
@@ -52,6 +54,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => RadioProvider()),
+        ChangeNotifierProvider(create: (_) => NewsProvider()),
       ],
       child: MaterialApp(
         navigatorKey: navigatorKey,
@@ -60,6 +63,7 @@ class MyApp extends StatelessWidget {
           '/': (context) => HomeScreen(),
           '/radio1': (context) => RadioScreen1(),
           '/radio2': (context) => RadioScreen2(),
+          '/news': (context) => NewsScreen(),
         },
       ),
     );

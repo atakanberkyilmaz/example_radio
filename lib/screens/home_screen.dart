@@ -21,6 +21,12 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
+                Navigator.pushNamed(context, '/news');
+              },
+              child: Text('Go to News'),
+            ),
+            ElevatedButton(
+              onPressed: () {
                 Navigator.pushNamed(context, '/radio1');
               },
               child: Text('Go to Radio 1'),
